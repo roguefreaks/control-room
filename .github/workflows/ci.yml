@@ -14,7 +14,10 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # npm install, not npm ci: the lockfile is generated on Windows and npm
+      # omits Linux-only transitive optional deps (@emnapi/*) from it — a
+      # long-standing npm platform bug that makes `npm ci` fail on Linux runners.
+      - run: npm install --no-audit --no-fund
       - name: Typecheck
         run: npm run typecheck
       - name: Lint
