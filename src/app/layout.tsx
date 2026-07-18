@@ -7,6 +7,7 @@ const archivo = Archivo({
   variable: "--font-archivo",
   subsets: ["latin"],
   display: "swap",
+  axes: ["wdth"],
 });
 
 const instrument = Instrument_Sans({
@@ -63,8 +64,8 @@ export const viewport: Viewport = {
   ],
 };
 
-/** Runs before paint: resolves stored/system theme so there is no flash. */
-const themeInit = `(function(){var d=document.documentElement;d.classList.add("js");try{var s=localStorage.getItem("cr-theme");var t=s==="light"||s==="dark"?s:(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");d.setAttribute("data-theme",t);}catch(e){d.setAttribute("data-theme","light");}})();`;
+/** Runs before paint: dark-first console — stored preference wins, else dark. */
+const themeInit = `(function(){var d=document.documentElement;d.classList.add("js");try{var s=localStorage.getItem("cr-theme");d.setAttribute("data-theme",s==="light"?"light":"dark");}catch(e){d.setAttribute("data-theme","dark");}})();`;
 
 export default function RootLayout({
   children,
@@ -72,14 +73,14 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      data-theme="light"
+      data-theme="dark"
       suppressHydrationWarning
       className={`${archivo.variable} ${instrument.variable} ${plexMono.variable} h-full antialiased`}
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body>{children}</body>
     </html>
   );
 }

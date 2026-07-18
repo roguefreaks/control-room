@@ -21,6 +21,8 @@ type ConsoleContextValue = {
   state: VisitorState;
   startedAt: number;
   booted: boolean;
+  activeSection: SectionId | null;
+  setActiveSection: (id: SectionId | null) => void;
   visitorNumber: number | null;
   todayCount: number | null;
   totalCount: number | null;
@@ -65,6 +67,7 @@ function writeSession(key: string, value: string) {
 export function ConsoleProvider({ children }: { children: ReactNode }) {
   const [state, setState] = useState<VisitorState>("RECEIVED");
   const [booted, setBooted] = useState(false);
+  const [activeSection, setActiveSection] = useState<SectionId | null>(null);
   const [startedAt, setStartedAt] = useState<number>(() => Date.now());
   const [visitorNumber, setVisitorNumber] = useState<number | null>(null);
   const [todayCount, setTodayCount] = useState<number | null>(null);
@@ -100,9 +103,10 @@ export function ConsoleProvider({ children }: { children: ReactNode }) {
       .then((data) => {
         if (!data) return;
         setTelemetryConfigured(Boolean(data.configured));
-        setVisitorNumber(data.visitorNumber ?? null);
+        // 0 means "returning session before any counted visit today" — no number
+        setVisitorNumber(data.visitorNumber || null);
         setTodayCount(data.today ?? null);
-        setTotalCount(data.total ?? null);
+        setTotalCount(data.total || null);
       })
       .catch(() => setTelemetryConfigured(false));
 
@@ -144,6 +148,8 @@ export function ConsoleProvider({ children }: { children: ReactNode }) {
         state,
         startedAt,
         booted,
+        activeSection,
+        setActiveSection,
         visitorNumber,
         todayCount,
         totalCount,

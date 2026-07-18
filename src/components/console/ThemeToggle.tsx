@@ -8,24 +8,14 @@ import { useCallback, useSyncExternalStore } from "react";
  * keeps this button in sync no matter who flips the theme (palette included).
  */
 function subscribe(onChange: () => void): () => void {
+  // dark-first console: only the stored preference (or the toggle) changes
+  // the shift, so watching the attribute is sufficient
   const observer = new MutationObserver(onChange);
   observer.observe(document.documentElement, {
     attributes: true,
     attributeFilter: ["data-theme"],
   });
-  const mq = window.matchMedia("(prefers-color-scheme: dark)");
-  const onSystemChange = () => {
-    // follow system only while the user has no stored preference
-    if (!localStorage.getItem("cr-theme")) {
-      document.documentElement.setAttribute("data-theme", mq.matches ? "dark" : "light");
-    }
-    onChange();
-  };
-  mq.addEventListener("change", onSystemChange);
-  return () => {
-    observer.disconnect();
-    mq.removeEventListener("change", onSystemChange);
-  };
+  return () => observer.disconnect();
 }
 
 function getSnapshot(): "light" | "dark" {
@@ -35,7 +25,7 @@ function getSnapshot(): "light" | "dark" {
 }
 
 export function ThemeToggle({ className = "" }: { className?: string }) {
-  const theme = useSyncExternalStore(subscribe, getSnapshot, () => "light" as const);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, () => "dark" as const);
 
   const toggle = useCallback(() => {
     const next = getSnapshot() === "dark" ? "light" : "dark";

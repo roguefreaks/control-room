@@ -1,8 +1,8 @@
 import { ConsoleProvider } from "@/components/console/ConsoleProvider";
 import { Boot } from "@/components/console/Boot";
-import { StatusStrip } from "@/components/console/StatusStrip";
 import { SectionObserver } from "@/components/console/SectionObserver";
 import { CommandPalette } from "@/components/palette/CommandPalette";
+import { ConsoleFrame } from "@/components/frame/ConsoleFrame";
 import { Hero } from "@/components/modules/Hero";
 import { Operations } from "@/components/modules/Operations";
 import { Deployments } from "@/components/modules/Deployments";
@@ -47,15 +47,15 @@ export default async function Page() {
   ]);
 
   return (
-    <ConsoleProvider>
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
       />
+      <ConsoleProvider>
       <Boot />
-      <StatusStrip />
       <SectionObserver />
-      <main className="flex-1">
+      <ConsoleFrame health={health} feed={feed}>
         <Hero health={health} />
         <Operations />
         <Deployments health={health} feed={feed} />
@@ -63,9 +63,10 @@ export default async function Page() {
         <AuditLog />
         <Incidents />
         <Comms initialSignals={signals} />
-      </main>
-      <DaySummary />
+        <DaySummary />
+      </ConsoleFrame>
       <CommandPalette />
-    </ConsoleProvider>
+      </ConsoleProvider>
+    </>
   );
 }
