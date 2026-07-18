@@ -38,10 +38,13 @@ export function TopBar() {
         booted ? "" : "opacity-0"
       }`}
     >
-      <a href="#top" className="flex items-center gap-2 no-underline">
+      <a href="#top" className="flex min-w-0 items-center gap-2 no-underline">
         <span className="led" data-ok="true" aria-hidden />
-        <span className="stamp text-[13px] tracking-tight text-ink">
+        <span className="stamp hidden text-[13px] tracking-tight text-ink sm:inline">
           ACHYUT&nbsp;//&nbsp;CONTROL&nbsp;ROOM
+        </span>
+        <span className="stamp text-[13px] tracking-tight text-ink sm:hidden">
+          A&nbsp;//&nbsp;CR
         </span>
       </a>
 

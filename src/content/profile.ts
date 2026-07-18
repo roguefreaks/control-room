@@ -24,4 +24,4 @@ export const profile = {
 } as const;
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://achyut-control-room.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://control-room-weld.vercel.app";

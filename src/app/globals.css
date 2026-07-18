@@ -92,6 +92,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* the console root: 100vh fallback for browsers without dvh support —
+   without this, older mobile WebViews collapse the frame and nothing scrolls */
+.console-root {
+  height: 100vh;
+  height: 100dvh;
+}
+
 /* the scrollable instrument screen — kept transparent so the static grid
    underlay never repaints during scroll (compositor-only scrolling) */
 .console-screen {
@@ -99,6 +106,7 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .screen-grid {

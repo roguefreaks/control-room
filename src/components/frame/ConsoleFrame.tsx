@@ -23,7 +23,7 @@ export function ConsoleFrame({
   children: ReactNode;
 }) {
   return (
-    <div className="flex h-dvh flex-col bg-bezel">
+    <div className="console-root flex flex-col bg-bezel">
       <TopBar />
       <div className="flex min-h-0 flex-1">
         <LeftRail />
