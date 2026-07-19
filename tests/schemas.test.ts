@@ -8,7 +8,7 @@ describe("signal schema", () => {
   });
 
   it("trims and enforces length bounds", () => {
-    expect(signalSchema.safeParse({ name: " A ", message: "hey" }).success).toBe(false); // 1 char after trim
+    expect(signalSchema.safeParse({ name: " A ", message: "hey" }).success).toBe(false);
     expect(signalSchema.safeParse({ name: "A".repeat(41), message: "hey" }).success).toBe(false);
     expect(
       signalSchema.safeParse({ name: "Priya", message: "x".repeat(141) }).success,
@@ -26,6 +26,34 @@ describe("signal schema", () => {
       signalSchema.safeParse({ name: "Bot", message: "hello there", station: "x" }).success,
     ).toBe(false);
   });
+
+  it("rejects unknown extra keys (strict object)", () => {
+    expect(
+      signalSchema.safeParse({ name: "Priya", message: "hello there", admin: true }).success,
+    ).toBe(false);
+  });
+
+  it("strips control and zero-width characters", () => {
+    const r = signalSchema.parse({
+      name: "Priya",
+      message: "hi​there friend",
+    });
+    expect(r.name).toBe("Priya");
+    expect(r.message).toBe("hithere friend");
+  });
+
+  it("cannot smuggle length past the cleaner", () => {
+    // zero-width padding is stripped before the length check
+    expect(
+      signalSchema.safeParse({
+        name: "Priya",
+        message: "x".repeat(139) + "​​",
+      }).success,
+    ).toBe(true);
+    expect(
+      signalSchema.safeParse({ name: "Priya", message: "x".repeat(141) }).success,
+    ).toBe(false);
+  });
 });
 
 describe("beacon schema", () => {
@@ -34,8 +62,9 @@ describe("beacon schema", () => {
     expect(beaconSchema.safeParse({ type: "section", section: "telemetry" }).success).toBe(true);
   });
 
-  it("rejects unknown sections and shapes", () => {
+  it("rejects unknown sections, extra keys and shapes", () => {
     expect(beaconSchema.safeParse({ type: "section", section: "admin" }).success).toBe(false);
+    expect(beaconSchema.safeParse({ type: "visit", extra: 1 }).success).toBe(false);
     expect(beaconSchema.safeParse({ type: "boom" }).success).toBe(false);
     expect(beaconSchema.safeParse(null).success).toBe(false);
   });

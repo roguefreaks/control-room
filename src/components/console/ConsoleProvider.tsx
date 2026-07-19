@@ -94,6 +94,16 @@ export function ConsoleProvider({ children }: { children: ReactNode }) {
       if (readSession(KEYS.booted) === "1") setBooted(true);
     }, 0);
 
+    // standard self-XSS warning for anyone opening the console
+    // eslint-disable-next-line no-console
+    console.log(
+      "%cCONTROL ROOM%c\nIf someone told you to paste something here, it is a scam. " +
+        "Nothing secret lives in this tab: the interesting parts are at " +
+        "github.com/roguefreaks/control-room",
+      "background:#ff6a28;color:#fff;padding:2px 8px;font-weight:bold",
+      "color:inherit",
+    );
+
     fetch("/api/visitors", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
