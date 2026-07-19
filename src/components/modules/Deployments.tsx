@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { systems, experiments } from "@/content/systems";
 import type { HealthReading } from "@/lib/health";
 import type { DeployEvent } from "@/lib/github";
 import { timeAgo } from "@/lib/format";
+import { getProofShots } from "@/lib/proof";
 import { Module } from "./Module";
 
 function HealthBadge({ reading }: { reading: HealthReading | undefined }) {
@@ -60,6 +62,39 @@ export function Deployments({
                 <span key={t} className="chip">{t}</span>
               ))}
             </div>
+
+            {getProofShots(s.id).length > 0 && (
+              <div className="mt-5 border-t border-dashed border-line pt-4">
+                <p className="readout text-muted">
+                  EVIDENCE · REAL SCREENS, DEMO DATA
+                </p>
+                <div className="mt-3 flex snap-x gap-3 overflow-x-auto pb-2">
+                  {getProofShots(s.id).map((shot) => (
+                    <a
+                      key={shot.src}
+                      href={shot.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group w-56 flex-none snap-start"
+                      aria-label={`${s.name}: ${shot.caption}, full size`}
+                    >
+                      <span className="relative block aspect-video overflow-hidden border border-line bg-paper transition-colors group-hover:border-signal">
+                        <Image
+                          src={shot.src}
+                          alt={`${s.name}: ${shot.caption}`}
+                          fill
+                          sizes="224px"
+                          className="object-cover object-top"
+                        />
+                      </span>
+                      <span className="readout mt-1.5 block truncate text-muted group-hover:text-signal-text">
+                        {shot.caption} ↗
+                      </span>
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="mt-5 border-t border-dashed border-line pt-4">
               <a
