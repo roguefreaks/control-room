@@ -62,7 +62,10 @@ export function DaySummary() {
 
         <p className="readout mt-8 text-center text-muted">
           © {new Date().getFullYear()} {profile.name} · built with Next.js · no
-          trackers, no third-party scripts
+          trackers, no third-party scripts ·{" "}
+          <a href="/privacy" className="underline decoration-line-strong underline-offset-4 hover:text-signal-text">
+            privacy
+          </a>
         </p>
       </div>
     </footer>
