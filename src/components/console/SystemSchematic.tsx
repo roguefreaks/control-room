@@ -49,7 +49,7 @@ export function SystemSchematic({ health }: { health: HealthReading[] }) {
     <div className="module transform-gpu overflow-x-auto p-3 sm:p-4">
       <span className="tick" aria-hidden />
       <div className="flex items-baseline justify-between gap-3 px-1">
-        <p className="readout text-muted">SYSTEM SCHEMATIC — LIVE ORDER FLOW</p>
+        <p className="readout text-muted">SYSTEM SCHEMATIC · LIVE ORDER FLOW</p>
         <p className="readout hidden text-muted sm:block">
           probes refresh every 10 min · your lane is orange
         </p>
@@ -158,7 +158,7 @@ export function SystemSchematic({ health }: { health: HealthReading[] }) {
             const done = i < currentRank;
             const active = i === currentRank;
             return (
-              <a key={node.state} href={node.href} aria-label={`${node.state} — jump`}>
+              <a key={node.state} href={node.href} aria-label={`${node.state}: jump to section`}>
                 <circle
                   cx={NODE_X[i]}
                   cy={VISITOR_Y}

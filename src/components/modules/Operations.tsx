@@ -19,7 +19,7 @@ export function Operations() {
           <div>
             <p className="readout text-muted">ACTIVE ENGAGEMENT</p>
             <h3 className="mt-1 font-display text-xl font-bold text-ink sm:text-2xl">
-              {client.role} — {client.name}
+              {client.role}, {client.name}
             </h3>
           </div>
           <p className="readout text-ink-soft">

@@ -59,7 +59,7 @@ export function Guestbook({ initialSignals }: { initialSignals: Signal[] | null 
 
       {offline ? (
         <p className="readout mt-4 text-muted">
-          signal board offline — storage not configured on this deployment.
+          signal board offline. storage is not configured on this deployment.
         </p>
       ) : (
         <>
@@ -127,7 +127,7 @@ export function Guestbook({ initialSignals }: { initialSignals: Signal[] | null 
               <li key={s.id} className="py-2.5 font-mono text-[13px]">
                 <span className="readout text-muted">{timeAgo(s.created_at)} · </span>
                 <span className="font-semibold text-signal-text">{s.name}</span>
-                <span className="text-ink-soft"> — {s.message}</span>
+                <span className="text-ink-soft">: {s.message}</span>
               </li>
             ))}
           </ul>

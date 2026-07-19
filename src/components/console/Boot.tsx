@@ -5,7 +5,7 @@ import { useConsole } from "./ConsoleProvider";
 import { profile } from "@/content/profile";
 
 const LINES = [
-  "control-room v1.0 — cold start",
+  "control-room v1.0 · cold start",
   "mounting modules … operations deployments telemetry audit comms",
   "probing production systems … 2 targets",
   "registering visitor session …",

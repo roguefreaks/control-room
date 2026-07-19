@@ -27,7 +27,7 @@ export function DaySummary() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <div className="ticket mx-auto max-w-md p-5 font-mono text-[13px]">
           <p className="readout text-center font-semibold text-ink">
-            — DAY SUMMARY —
+            ** DAY SUMMARY **
           </p>
           <p className="readout mt-1 text-center text-muted" suppressHydrationWarning>
             printed {printedAt ?? "…"} IST
@@ -61,7 +61,7 @@ export function DaySummary() {
         </div>
 
         <p className="readout mt-8 text-center text-muted">
-          © {new Date().getFullYear()} {profile.name} · built with Next.js — no
+          © {new Date().getFullYear()} {profile.name} · built with Next.js · no
           trackers, no third-party scripts
         </p>
       </div>

@@ -12,7 +12,7 @@ export function Comms({ initialSignals }: { initialSignals: Signal[] | null }) {
         <div className="reveal">
           <p className="max-w-xl text-lg leading-relaxed text-ink-soft">
             The pipeline ends here. If you run a team that ships real software,
-            I&rsquo;d like to hear from you — I&rsquo;m in {profile.location} and can
+            I&rsquo;d like to hear from you. I&rsquo;m in {profile.location} and can
             start immediately.
           </p>
           <div className="mt-6">

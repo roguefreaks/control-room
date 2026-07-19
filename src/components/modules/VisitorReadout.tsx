@@ -18,7 +18,7 @@ export function VisitorReadout() {
   return (
     <div className="module reveal mt-6 p-5">
       <span className="tick" aria-hidden />
-      <p className="readout text-muted">VISITOR TELEMETRY — ANONYMOUS COUNTERS ONLY</p>
+      <p className="readout text-muted">VISITOR TELEMETRY · ANONYMOUS COUNTERS ONLY</p>
       <dl className="mt-3 grid grid-cols-3 gap-px border border-line bg-line">
         {cells.map((c) => (
           <div key={c.label} className="bg-surface p-3 sm:p-4">

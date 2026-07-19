@@ -6,9 +6,9 @@ export function Incidents() {
   return (
     <Module id="incidents" code="MOD-05" title="Incident report" note="what broke, honestly">
       <p className="reveal max-w-2xl text-sm leading-relaxed text-muted">
-        Every running system fails eventually. These are real ones from my
-        production work — kept here because how you handle failure says more
-        than a feature list.
+        Every running system fails eventually. These are real failures from my
+        production work. They stay on this site because how you handle failure
+        says more than a feature list.
       </p>
       <div className="mt-6 grid gap-4 lg:grid-cols-3">
         {incidents.map((inc, i) => (

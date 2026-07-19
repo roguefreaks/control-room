@@ -26,11 +26,11 @@ const plexMono = IBM_Plex_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "achyut.ops — 2 systems in production",
+    default: "achyut.ops · 2 systems in production",
     template: "%s · achyut.ops",
   },
   description:
-    "Achyut Anand Pandey — full-stack developer running two live client platforms (100+ orders/day). This portfolio is the operations console.",
+    "Achyut Anand Pandey, full-stack developer. Two live client platforms doing 100+ orders a day. This portfolio is the console I run them from.",
   keywords: [
     "Achyut Anand Pandey",
     "full-stack developer",
@@ -45,14 +45,14 @@ export const metadata: Metadata = {
     url: SITE_URL,
     title: "ACHYUT // CONTROL ROOM",
     description:
-      "Full-stack developer. 2 systems in production, 100+ orders/day. Available immediately — Hyderabad, India.",
+      "Full-stack developer. 2 systems in production, 100+ orders/day. Available immediately in Hyderabad, India.",
     siteName: "achyut.ops",
   },
   twitter: {
     card: "summary_large_image",
     title: "ACHYUT // CONTROL ROOM",
     description:
-      "Full-stack developer. 2 systems in production, 100+ orders/day. Available immediately — Hyderabad, India.",
+      "Full-stack developer. 2 systems in production, 100+ orders/day. Available immediately in Hyderabad, India.",
   },
   robots: { index: true, follow: true },
 };

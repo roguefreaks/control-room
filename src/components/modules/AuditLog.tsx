@@ -40,7 +40,7 @@ export function AuditLog() {
                 </td>
                 <td className="px-4 py-3 text-ink-soft">
                   <span className="text-ink">{row.entry}</span>
-                  {row.detail && <span className="text-muted"> — {row.detail}</span>}
+                  {row.detail && <span className="text-muted"> · {row.detail}</span>}
                 </td>
               </tr>
             ))}

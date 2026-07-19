@@ -79,12 +79,12 @@ export function Deployments({
       <div className="module reveal mt-6 p-5">
         <span className="tick" aria-hidden />
         <div className="flex items-baseline justify-between gap-3">
-          <p className="readout text-muted">DEPLOY FEED — LIVE FROM GITHUB</p>
+          <p className="readout text-muted">DEPLOY FEED · LIVE FROM GITHUB</p>
           <p className="readout text-muted">refreshes every 10 min</p>
         </div>
         {feed.length === 0 ? (
           <p className="readout mt-4 text-muted">
-            feed quiet — no public events in the last window. the systems above
+            feed quiet. no events in the last window, but the systems above
             are still running.
           </p>
         ) : (
@@ -104,7 +104,7 @@ export function Deployments({
       {/* lab experiments — deliberately secondary */}
       <div className="reveal mt-10">
         <p className="hairline-label readout text-muted">
-          LAB — SMALLER EXPERIMENTS, NOT ON THE PAGER
+          LAB · SMALLER EXPERIMENTS, NOT ON THE PAGER
         </p>
         <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {experiments.map((e) => (

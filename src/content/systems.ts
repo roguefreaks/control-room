@@ -13,7 +13,7 @@ export const client = {
   name: "Subhash Chand Multi-Speciality Hospital",
   place: "Deoria, India",
   role: "Freelance Full-Stack Developer",
-  period: "Mar 2026 — Present",
+  period: "Since Mar 2026",
   mode: "Remote · sole developer",
 } as const;
 
@@ -22,7 +22,7 @@ export const systems: ProductionSystem[] = [
     id: "prabhu-dana-pani",
     ticket: "SYS-01",
     name: "Prabhu Dana Pani",
-    what: "Canteen ordering and operations platform — online, POS and dine-in orders for a hospital canteen, in English and Hindi.",
+    what: "Canteen ordering and operations for a hospital: online, POS and dine-in orders, in English and Hindi.",
     url: "https://prabhu-dana-pani.vercel.app",
     stack: ["Next.js 14", "React 18", "TypeScript", "PostgreSQL", "Supabase"],
     highlights: [
@@ -36,7 +36,7 @@ export const systems: ProductionSystem[] = [
     id: "cascade-coal",
     ticket: "SYS-02",
     name: "Cascade & Coal",
-    what: "Laundry management platform — 30 screens across customer, staff-POS and admin portals for the hospital's garment care unit.",
+    what: "Laundry management for the hospital's garment care unit: 30 screens across customer, staff POS and admin portals.",
     url: "https://cascade-coal-delta.vercel.app",
     stack: ["Next.js 16", "React 19", "TypeScript", "Supabase", "Vercel"],
     highlights: [
@@ -75,7 +75,7 @@ export const experiments: LabExperiment[] = [
   {
     id: "iv-monitor",
     name: "IoT IV Fluid Monitoring",
-    what: "ESP32 firmware processing sensor data to automate IV fluid monitoring with real-time alerts — 2nd Runner-Up, International Hackathon (500+ teams).",
+    what: "ESP32 firmware that automates IV fluid monitoring with real-time alerts. Won 2nd Runner-Up at an international hackathon with 500+ teams.",
     stack: ["C++", "ESP32", "IoT"],
     date: "Jul 2025",
   },

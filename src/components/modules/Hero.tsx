@@ -32,7 +32,7 @@ export function Hero({ health }: { health: HealthReading[] }) {
       >
         <p className="max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
           I&rsquo;m {profile.name}, the sole developer behind a hospital&rsquo;s
-          canteen and laundry platforms — together handling 100+ orders a day.
+          canteen and laundry platforms, together handling 100+ orders a day.
           {" "}{profile.tagline}
         </p>
         <div className="flex flex-wrap items-center gap-2">

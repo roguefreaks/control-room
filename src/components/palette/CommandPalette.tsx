@@ -29,12 +29,12 @@ export function CommandPalette() {
 
   const commands = useMemo<Command[]>(() => {
     const modules: [string, string][] = [
-      ["operations", "OPERATIONS — freelance experience"],
-      ["deployments", "DEPLOYMENTS — projects & lab"],
-      ["telemetry", "TELEMETRY — skills"],
-      ["audit", "AUDIT LOG — education, certs, achievements"],
-      ["incidents", "INCIDENT REPORT — what broke in production"],
-      ["comms", "COMMS — contact"],
+      ["operations", "OPERATIONS · freelance experience"],
+      ["deployments", "DEPLOYMENTS · projects & lab"],
+      ["telemetry", "TELEMETRY · skills"],
+      ["audit", "AUDIT LOG · education, certs, achievements"],
+      ["incidents", "INCIDENT REPORT · what broke in production"],
+      ["comms", "COMMS · contact"],
     ];
     return [
       ...modules.map(
@@ -80,7 +80,7 @@ export function CommandPalette() {
       {
         id: "act-email",
         group: "Actions",
-        label: `Copy email — ${profile.email}`,
+        label: `Copy email · ${profile.email}`,
         hint: "copy",
         run: () => {
           navigator.clipboard?.writeText(profile.email).catch(() => {});
@@ -106,14 +106,14 @@ export function CommandPalette() {
       {
         id: "act-github",
         group: "Actions",
-        label: "Open GitHub — roguefreaks",
+        label: "Open GitHub · roguefreaks",
         hint: "↗",
         run: () => window.open(profile.links.githubPrimary, "_blank", "noopener"),
       },
       {
         id: "act-github2",
         group: "Actions",
-        label: "Open GitHub — SKY830-sudo (freelance)",
+        label: "Open GitHub · SKY830-sudo (freelance)",
         hint: "↗",
         run: () => window.open(profile.links.githubFreelance, "_blank", "noopener"),
       },

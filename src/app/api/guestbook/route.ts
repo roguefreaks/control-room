@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   const rl = postLimiter.check(ipHash);
   if (!rl.ok) {
     return NextResponse.json(
-      { error: "rate limited — the board accepts 3 signals per 10 minutes" },
+      { error: "rate limited: the board accepts 3 signals per 10 minutes" },
       { status: 429, headers: { "Retry-After": String(Math.ceil(rl.retryAfterMs / 1000)) } },
     );
   }
