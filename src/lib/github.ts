@@ -54,10 +54,14 @@ function toDeployEvent(account: string, e: GitHubEvent): DeployEvent | null {
   switch (e.type) {
     case "PushEvent": {
       const commits = e.payload?.commits ?? [];
-      if (commits.length === 0) return null;
-      const first = commits[0].message.split("\n")[0];
-      const extra = commits.length > 1 ? ` (+${commits.length - 1} more)` : "";
-      return { ...base, kind: "push", message: `${first}${extra}` };
+      if (commits.length > 0) {
+        const first = commits[0].message.split("\n")[0];
+        const extra = commits.length > 1 ? ` (+${commits.length - 1} more)` : "";
+        return { ...base, kind: "push", message: `${first}${extra}` };
+      }
+      // private-repo events omit commit details; show the branch instead
+      const branch = e.payload?.ref?.replace("refs/heads/", "");
+      return { ...base, kind: "push", message: branch ? `pushed to ${branch}` : "pushed" };
     }
     case "CreateEvent":
       return {
