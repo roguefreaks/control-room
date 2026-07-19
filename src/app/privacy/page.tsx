@@ -37,9 +37,10 @@ export default function PrivacyPage() {
           For spam protection it is run through a one-way hash and forgotten.
         </p>
         <p>
-          <strong className="text-ink">The signal board.</strong> If you leave a
-          message there, the name and message you typed are public by design.
-          Want one removed? Email{" "}
+          <strong className="text-ink">The signal board.</strong> Messages you
+          send there are delivered privately to me. They are never shown to
+          other visitors; only you can see what you sent, in your own session.
+          Want one erased from my records? Email{" "}
           <a
             href={`mailto:${profile.email}`}
             className="text-signal-text underline decoration-line-strong underline-offset-4"

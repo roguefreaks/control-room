@@ -2,10 +2,9 @@ import { profile } from "@/content/profile";
 import { Module } from "./Module";
 import { ContactActions } from "@/components/ui/ContactActions";
 import { Guestbook } from "./Guestbook";
-import type { Signal } from "@/lib/guestbook";
 
-/** COMMS — contact channel + the public signal board. */
-export function Comms({ initialSignals }: { initialSignals: Signal[] | null }) {
+/** COMMS: contact channel + the private signal board. */
+export function Comms() {
   return (
     <Module id="comms" code="MOD-06" title="Comms" note="final state: SHORTLISTED ✓">
       <div className="grid gap-8 lg:grid-cols-[1.1fr_1fr]">
@@ -62,7 +61,7 @@ export function Comms({ initialSignals }: { initialSignals: Signal[] | null }) {
         </div>
 
         <div className="reveal" style={{ transitionDelay: "80ms" }}>
-          <Guestbook initialSignals={initialSignals} />
+          <Guestbook />
         </div>
       </div>
     </Module>

@@ -33,9 +33,11 @@ framework runtime.
   session cookie with a random UUID, anonymous counters in Supabase, IPs
   only ever used as salted hashes for rate limiting. No Supabase configured →
   the telemetry module hides itself.
-- **Signal board** (`/api/guestbook`): zod-validated, profanity-filtered
-  (leetspeak-aware), rate-limited (3 posts / 10 min / IP), honeypot field,
-  admin-deletable.
+- **Signal board** (`/api/guestbook`): private by design — messages are
+  emailed to me and stored, never displayed to other visitors (senders see
+  only their own, in their session). Zod-validated, profanity-filtered
+  (leetspeak-aware), rate-limited (3 posts / 10 min / IP), honeypot field;
+  listing and deletion require the admin token.
 - **The state machine** (`src/lib/state-machine.ts`) is pure and fully unit
   tested: forward-only, `SHORTLISTED` reachable only through a contact action.
 - **Security headers** in `next.config.ts`: CSP (script/style

@@ -13,10 +13,14 @@ export const runtime = "nodejs";
 const postLimiter = createRateLimiter({ max: 3, windowMs: 10 * 60_000 });
 const readLimiter = createRateLimiter({ max: 60, windowMs: 60_000 });
 
+/** Signals are private: listing requires the admin token. */
 export async function GET(req: NextRequest) {
   const rl = readLimiter.check(hashIp(clientIp(req)));
   if (!rl.ok) {
     return NextResponse.json({ error: "rate limited" }, { status: 429, headers: apiHeaders() });
+  }
+  if (!tokenMatches(req.headers.get("x-admin-token"), process.env.ADMIN_TOKEN)) {
+    return NextResponse.json({ error: "unauthorized" }, { status: 401, headers: apiHeaders() });
   }
   const signals = await listSignals();
   return NextResponse.json(

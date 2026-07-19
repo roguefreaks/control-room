@@ -13,7 +13,6 @@ import { Comms } from "@/components/modules/Comms";
 import { DaySummary } from "@/components/modules/DaySummary";
 import { getHealth } from "@/lib/health";
 import { getDeployFeed } from "@/lib/github";
-import { listSignals } from "@/lib/guestbook";
 import { profile, SITE_URL } from "@/content/profile";
 
 /** ISR: live data (health, deploy feed, signals) refreshes every 10 minutes. */
@@ -40,10 +39,9 @@ const personJsonLd = {
 };
 
 export default async function Page() {
-  const [health, feed, signals] = await Promise.all([
+  const [health, feed] = await Promise.all([
     getHealth().catch(() => []),
     getDeployFeed().catch(() => []),
-    listSignals().catch(() => null),
   ]);
 
   return (
@@ -62,7 +60,7 @@ export default async function Page() {
         <Telemetry />
         <AuditLog />
         <Incidents />
-        <Comms initialSignals={signals} />
+        <Comms />
         <DaySummary />
       </ConsoleFrame>
       <CommandPalette />
