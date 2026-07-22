@@ -66,7 +66,7 @@ export function Deployments({
             {getProofShots(s.id).length > 0 && (
               <div className="mt-5 border-t border-dashed border-line pt-4">
                 <p className="readout text-muted">
-                  EVIDENCE · REAL SCREENS, DEMO DATA
+                  EVIDENCE · REAL SCREENS
                 </p>
                 <div className="mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
                   {getProofShots(s.id).map((shot) => (
