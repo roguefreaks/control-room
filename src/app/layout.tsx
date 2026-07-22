@@ -58,10 +58,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f2efe7" },
-    { media: "(prefers-color-scheme: dark)", color: "#131311" },
-  ],
+  // One colour for every phone. The console boots dark regardless of the
+  // device's own theme, and the browser paints this before first paint —
+  // a light entry here is exactly the cream flash visitors reported.
+  themeColor: "#131311",
 };
 
 /** Runs before paint: dark-first console — stored preference wins, else dark. */
@@ -78,6 +78,8 @@ export default function RootLayout({
       className={`${archivo.variable} ${instrument.variable} ${plexMono.variable} h-full antialiased`}
     >
       <head>
+        <meta name="color-scheme" content="dark light" />
+        <style>{`html{background:#131311;color-scheme:dark}html[data-theme="light"]{background:#f2efe7;color-scheme:light}`}</style>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>
       <body>{children}</body>

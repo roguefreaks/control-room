@@ -6,6 +6,7 @@ import { profile } from "@/content/profile";
 import { systems, experiments } from "@/content/systems";
 import { skillGroups } from "@/content/skills";
 import { useConsole } from "@/components/console/ConsoleProvider";
+import { applyTheme } from "@/lib/theme";
 
 type Command = {
   id: string;
@@ -93,14 +94,11 @@ export function CommandPalette() {
         label: "Toggle theme",
         hint: "light/dark",
         run: () => {
-          const next =
+          applyTheme(
             document.documentElement.getAttribute("data-theme") === "dark"
               ? "light"
-              : "dark";
-          document.documentElement.setAttribute("data-theme", next);
-          try {
-            localStorage.setItem("cr-theme", next);
-          } catch {}
+              : "dark",
+          );
         },
       },
       {

@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useSyncExternalStore } from "react";
+import { applyTheme } from "@/lib/theme";
 
 /**
  * Theme is external state (the <html data-theme> attribute, set before paint
@@ -28,11 +29,7 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
   const theme = useSyncExternalStore(subscribe, getSnapshot, () => "dark" as const);
 
   const toggle = useCallback(() => {
-    const next = getSnapshot() === "dark" ? "light" : "dark";
-    document.documentElement.setAttribute("data-theme", next);
-    try {
-      localStorage.setItem("cr-theme", next);
-    } catch {}
+    applyTheme(getSnapshot() === "dark" ? "light" : "dark");
   }, []);
 
   return (

@@ -30,6 +30,7 @@ export const systems: ProductionSystem[] = [
       "Server-side authoritative pricing and a transition-gated order state machine",
       "POS with split billing and KOT printing, live kitchen queue, 18-section admin portal (inventory, payroll, FSSAI reporting)",
       "RBAC with TOTP 2FA, Web Push (VAPID/PWA), UPI payment flows",
+      "Coupon engine with atomic redemption, plus spend-based loyalty rewards: personal codes over a 90-day rolling window, paused during sales",
     ],
   },
   {
