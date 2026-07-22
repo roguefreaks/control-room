@@ -35,7 +35,7 @@ export function Deployments({
     <Module id="deployments" code="MOD-02" title="Deployments" note="live systems + activity">
       <div className="grid gap-6 lg:grid-cols-2">
         {systems.map((s, i) => (
-          <article key={s.id} className="ticket reveal p-5 sm:p-6" style={{ transitionDelay: `${i * 80}ms` }}>
+          <article key={s.id} className="ticket reveal min-w-0 p-5 sm:p-6" style={{ transitionDelay: `${i * 80}ms` }}>
             <div className="flex flex-wrap items-center justify-between gap-3 border-b border-dashed border-line pb-3">
               <p className="readout font-semibold text-signal-text">
                 TICKET {s.ticket}
@@ -68,7 +68,7 @@ export function Deployments({
                 <p className="readout text-muted">
                   EVIDENCE · REAL SCREENS, DEMO DATA
                 </p>
-                <div className="mt-3 flex snap-x gap-3 overflow-x-auto pb-2">
+                <div className="mt-3 flex snap-x snap-mandatory gap-3 overflow-x-auto pb-2">
                   {getProofShots(s.id).map((shot) => (
                     <a
                       key={shot.src}
